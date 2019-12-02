@@ -1,4 +1,6 @@
-import { ADD_TODO, TOGGLE_TODO, FETCH_TODOS } from '../actions/actionTypes';
+import { ADD_TODO, TOGGLE_TODO, FETCH_TODOS, DELETE_TODO } from '../actions/actionTypes';
+
+const _ = require('lodash');
 
 const initialState = {
     allIds: [],
@@ -53,9 +55,16 @@ export default (state = initialState, action) => {
             allIds,
             byIds
         }
+    } 
+
+    if (action.type === DELETE_TODO) {
+        const newByIds = _.omit(state.byIds, `${action.payload.id}`);
+        const newAllIds = state.allIds.filter(p => p !== action.payload.id);
+        return {
+            allIds: newAllIds,
+            byIds: newByIds
+        }
     }
 
     return state;
 }
-
-// https://github.com/zalmoxisus/redux-devtools-extension#installation

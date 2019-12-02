@@ -1,1 +1,1 @@
-export { addTodo, filterTodo, toggleTodo, fetchTodos } from './todoActions';
+export { addTodo, filterTodo, toggleTodo, fetchTodos, deleteTodo } from './todoActions';

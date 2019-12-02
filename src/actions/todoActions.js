@@ -1,4 +1,4 @@
-import { ADD_TODO, FILTER_TODO, TOGGLE_TODO, FETCH_TODOS } from "./actionTypes";
+import { ADD_TODO, FILTER_TODO, TOGGLE_TODO, FETCH_TODOS, DELETE_TODO } from "./actionTypes";
 import todosApi from '../apis/todos';
 
 let todoIndex = 0;
@@ -26,6 +26,15 @@ export const filterTodo = filter => {
 export const toggleTodo = id => {
     return {
         type: TOGGLE_TODO,
+        payload: {
+            id
+        }
+    }
+}
+
+export const deleteTodo = id => {
+    return {
+        type: DELETE_TODO,
         payload: {
             id
         }
