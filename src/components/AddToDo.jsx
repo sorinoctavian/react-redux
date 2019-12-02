@@ -10,7 +10,7 @@ class AddToDo extends React.Component {
         return (
             <div>
                 <div><input onChange={e => this.setState({ todoContent: e.target.value })}/></div>
-                <div><button onClick={() => this.props.addTodo(this.state.todoContent, 'medium')}>add</button></div>
+                <div><button onClick={() => this.props.addTodo(this.state.todoContent)}>add</button></div>
             </div>
         );
     }

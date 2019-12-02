@@ -1,14 +1,14 @@
-import { ADD_TODO, FILTER_TODO, TOGGLE_TODO } from "./actionTypes";
+import { ADD_TODO, FILTER_TODO, TOGGLE_TODO, FETCH_TODOS } from "./actionTypes";
+import todosApi from '../apis/todos';
 
 let todoIndex = 0;
 
-export const addTodo = (content, priority) => {
+export const addTodo = content => {
     return {
         type: ADD_TODO,
         payload: {
             id: ++todoIndex,
             content,
-            priority,
             done: false
         }
     }
@@ -30,4 +30,10 @@ export const toggleTodo = id => {
             id
         }
     }
+}
+
+// redux thunk allows to return function
+export const fetchTodos = () => async dispatch => {
+    const todos = await todosApi.fetchAll();
+    dispatch({ type: FETCH_TODOS, payload: todos });
 }
