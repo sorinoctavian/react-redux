@@ -41,8 +41,7 @@ export const deleteTodo = id => {
     }
 }
 
-// redux thunk allows to return function
-export const fetchTodos = () => async dispatch => {
-    const todos = await todosApi.fetchAll();
-    dispatch({ type: FETCH_TODOS, payload: todos });
+export const fetchTodos = id => async dispatch => {
+    const todos = await todosApi.fetchAll(id);
+    dispatch({ type: FETCH_TODOS, payload: todos })
 }

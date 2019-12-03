@@ -8,7 +8,7 @@ class Refresh extends React.Component {
             <div>
                 <h3>Refresh</h3>
                 <button
-                    onClick={this.props.fetchTodos}
+                    onClick={() => this.props.fetchTodos("1")}
                 >Refresh</button>
             </div>
         );
