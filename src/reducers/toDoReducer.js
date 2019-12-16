@@ -15,12 +15,12 @@ const todos = (state = initialState, action) => {
     console.log(action);
     if(action.type === 'ADD_TODO')
     {
-        let arr = [];
-       for(let i = 0; i< state.todos.length; i++)
-       {
-            arr.push({...state.todos[i]});
-       }
-        return {todos: [...arr, action.payload]};
+        return {todos: [...state.todos, action.payload]};
+    }
+    if(action.type === 'REMOVE_TODO')
+    {
+        const arr = state.todos.filter((item) => { return item.id !== action.id});
+        return {todos: arr}
     }
 
     return state;
