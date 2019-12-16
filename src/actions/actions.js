@@ -19,3 +19,10 @@ export const removeToDo = (id) => {
         }
     }
 }
+
+export const selectToDo = (toDo) => {
+    return {
+        type: actionTypes.SELECT_TODO,
+        payload: toDo
+    }
+}

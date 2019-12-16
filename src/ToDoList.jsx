@@ -8,13 +8,13 @@ class ToDoList extends React.Component {
         return (<React.Fragment>
             <ul>
                 {this.props.todos.map((todo) => {
-                    return <li key={todo.id}> {todo.content} <button onClick={() => this.props.removeToDo(todo.id)}>X</button> </li>
+                    return <li onClick={() => { this.props.selectToDo(todo) }} key={todo.id}> {todo.content} <button onClick={() => this.props.removeToDo(todo.id)}>X</button> </li>
                 })}
             </ul>
             <input type="text" onChange={(e) => { this.setState({ content: e.target.value }) }} />
 
             <button onClick={() => { this.props.addToDo(this.state.content) }}>Press me</button>
-            {!this.props.selectedToDo.id && <div>'no item selected'</div>}
+            {!this.props.selectedToDo.content && <div>'no item selected'</div>}
         </React.Fragment>)
     }
 }
@@ -28,7 +28,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     addToDo: actions.addToDo,
-    removeToDo: actions.removeToDo
+    removeToDo: actions.removeToDo,
+    selectToDo: actions.selectToDo
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoList)

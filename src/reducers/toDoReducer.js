@@ -29,7 +29,7 @@ const todos = (state = initialToDos, action) => {
 const selectedToDo = (state = initialSelectedToDo, action) => {
     if(action.type === actionTypes.SELECT_TODO)
     {
-        return action.payload.selectedTodo;
+        return action.payload;
     }
 
     return state;
