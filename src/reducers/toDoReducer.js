@@ -1,4 +1,4 @@
-
+import * as actionTypes from '../actions/actionTypes'
 
 const initialSelectedToDo = {};
 const initialToDos = [
@@ -13,11 +13,11 @@ const initialToDos = [
 
 const todos = (state = initialToDos, action) => {
     console.log(action);
-    if(action.type === 'ADD_TODO')
+    if(action.type === actionTypes.ADD_TODO)
     {
         return  [...state, action.payload];
     }
-    if(action.type === 'REMOVE_TODO')
+    if(action.type === actionTypes.REMOVE_TODO)
     {
         const arr = state.filter((item) => { return item.id !== action.payload.id});
         return arr;
@@ -27,7 +27,7 @@ const todos = (state = initialToDos, action) => {
 }
 
 const selectedToDo = (state = initialSelectedToDo, action) => {
-    if(action.type === 'SELECT_TODO')
+    if(action.type === actionTypes.SELECT_TODO)
     {
         return action.payload.selectedTodo;
     }
