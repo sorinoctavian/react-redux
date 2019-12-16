@@ -8,18 +8,21 @@ class ToDoList extends React.Component {
         return (<React.Fragment>
             <ul>
             {this.props.todos.map((todo) => {
-                return <li onClick={()=>this.props.removeToDo(todo.id)} key={todo.id} >{todo.content}</li>
+                return <li key={todo.id}> {todo.content} <button onClick={()=>this.props.removeToDo(todo.id)}>X</button> </li>
             })}
             </ul>
         <input type="text" onChange={(e) => {this.setState({content: e.target.value})}}/>
+        
         <button onClick={()=> {this.props.addToDo(this.state.content)}}>Press me</button>
+        <div>{!this.props.selectedToDo.id && 'no item selected'}</div>
         </React.Fragment>)
     }
 }
 
 const mapStateToProps = state => {
     return {
-        todos: state.todos
+        todos: state.todos,
+        selectedToDo: state.selectedToDo
     }
 }
 
