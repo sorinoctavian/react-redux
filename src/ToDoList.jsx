@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { addToDo } from './actions'
+import * as actions from './actions'
 
 class ToDoList extends React.Component {
     state = {content: ""}
@@ -8,7 +8,7 @@ class ToDoList extends React.Component {
         return (<React.Fragment>
             <ul>
             {this.props.todos.map((todo) => {
-                return <li key={todo.id} >{todo.content}</li>
+                return <li onClick={()=>this.props.removeToDo(todo.id)} key={todo.id} >{todo.content}</li>
             })}
             </ul>
         <input type="text" onChange={(e) => {this.setState({content: e.target.value})}}/>
@@ -23,4 +23,9 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {addToDo})(ToDoList)
+const mapDispatchToProps = {
+    addToDo:actions.addToDo,
+    removeToDo:actions.removeToDo
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoList)

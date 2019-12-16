@@ -19,7 +19,7 @@ const todos = (state = initialState, action) => {
     }
     if(action.type === 'REMOVE_TODO')
     {
-        const arr = state.todos.filter((item) => { return item.id !== action.id});
+        const arr = state.todos.filter((item) => { return item.id !== action.payload.id});
         return {todos: arr}
     }
 
