@@ -10,11 +10,11 @@ class ToDoList extends React.Component {
                 {this.props.todos.map((todo) => {
                     return (
 
-                        <li onClick={() => { this.props.selectToDo(todo) }}
+                        <li
                          key={todo.id}> 
                            <input type="checkbox" checked={todo.checked}
-                           onClick={() => this.props.toggleToDo(todo.id)}/>
-                            {todo.content}
+                           onClick={() => this.props.toggleToDo(todo)}/>
+                            <span onClick={() => { this.props.selectToDo(todo) }}>{todo.content}</span>
                             <button onClick={() => this.props.removeToDo(todo.id)}>X</button>
                         </li>
                     )
@@ -26,7 +26,7 @@ class ToDoList extends React.Component {
             <button onClick={() => { this.props.addToDo(this.state.content) }}>Press me</button>
             <div>
                 <button onClick={() => {
-                    this.props.updateToDo({ ...this.props.selectedToDo, content: this.state.content })
+                    this.props.updateToDo({...this.props.selectedToDo, content: this.state.content})
                 }}>Update Selected</button>
             </div>
             {!this.props.selectedToDo.content && <div>'no item selected'</div>}

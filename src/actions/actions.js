@@ -35,9 +35,9 @@ export const updateToDo = (toDo) => {
     }
 }
 
-export const toggleToDo = (id) => {
+export const toggleToDo = (toDo) => {
     return {
         type: actionTypes.TOGGLE_TODO,
-        payload : {id}
+        payload : toDo
     }
 }

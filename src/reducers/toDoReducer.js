@@ -29,10 +29,7 @@ const todos = (state = initialToDos, action) => {
                 return todo
             }
 
-            return {
-                ...todo,
-                ...action.payload
-            }
+            return {...action.payload }
         })
     }
 
@@ -48,11 +45,15 @@ const todos = (state = initialToDos, action) => {
     return state;
 }
 
+
 const selectedToDo = (state = initialSelectedToDo, action) => {
     if (action.type === actionTypes.SELECT_TODO) {
         return action.payload;
     }
-
+    if (action.type === actionTypes.TOGGLE_TODO){
+        if(state.id === action.payload.id)
+           return {...state, checked: !state.checked };
+    }
     return state;
 }
 
