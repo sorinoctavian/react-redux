@@ -23,6 +23,19 @@ const todos = (state = initialToDos, action) => {
         return arr;
     }
 
+    if(action.type === actionTypes.UPDATE_TODO){
+        return state.map((todo) => {
+            if (todo.id !== action.payload.id) {
+              return todo
+            }
+        
+            return {
+              ...todo,
+              ...action.payload
+            }
+          })
+    }
+
     return state;
 }
 
