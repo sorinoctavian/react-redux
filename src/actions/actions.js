@@ -6,7 +6,8 @@ export const addToDo = (text) => {
         type : actionTypes.ADD_TODO,
         payload: {
             id: idCounter++,
-            content: text
+            content: text,
+            checked: false
         }
     }
 }
@@ -31,5 +32,12 @@ export const updateToDo = (toDo) => {
     return {
         type: actionTypes.UPDATE_TODO,
         payload: toDo
+    }
+}
+
+export const toggleToDo = (id) => {
+    return {
+        type: actionTypes.TOGGLE_TODO,
+        payload : {id}
     }
 }

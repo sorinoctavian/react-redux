@@ -12,7 +12,8 @@ class ToDoList extends React.Component {
 
                         <li onClick={() => { this.props.selectToDo(todo) }}
                          key={todo.id}> 
-                           <input type="checkbox" checked={todo.checked}/>
+                           <input type="checkbox" checked={todo.checked}
+                           onClick={() => this.props.toggleToDo(todo.id)}/>
                             {todo.content}
                             <button onClick={() => this.props.removeToDo(todo.id)}>X</button>
                         </li>
@@ -44,7 +45,8 @@ const mapDispatchToProps = {
     addToDo: actions.addToDo,
     removeToDo: actions.removeToDo,
     selectToDo: actions.selectToDo,
-    updateToDo: actions.updateToDo
+    updateToDo: actions.updateToDo,
+    toggleToDo: actions.toggleToDo
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoList)

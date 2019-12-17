@@ -5,7 +5,7 @@ const initialToDos = [
     {
         id: 0,
         content: "TODO 1",
-        checked: true
+        checked: false
     },
     {
         id: 1,
