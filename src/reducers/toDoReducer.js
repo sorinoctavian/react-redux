@@ -4,11 +4,13 @@ const initialSelectedToDo = {};
 const initialToDos = [
     {
         id: 0,
-        content: "TODO 1"
+        content: "TODO 1",
+        checked: true
     },
     {
         id: 1,
-        content: "TODO 2"
+        content: "TODO 2",
+        checked: false
     }];
 
 const todos = (state = initialToDos, action) => {
