@@ -26,3 +26,10 @@ export const selectToDo = (toDo) => {
         payload: toDo
     }
 }
+
+export const updateToDo = (toDo) => {
+    return {
+        type: actionTypes.UPDATE_TODO,
+        payload: toDo
+    }
+}

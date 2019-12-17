@@ -1,1 +1,1 @@
-export {addToDo , removeToDo , selectToDo} from './actions'
+export {addToDo , removeToDo , selectToDo, updateToDo} from './actions'

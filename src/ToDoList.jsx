@@ -14,6 +14,11 @@ class ToDoList extends React.Component {
             <input type="text" onChange={(e) => { this.setState({ content: e.target.value }) }} />
 
             <button onClick={() => { this.props.addToDo(this.state.content) }}>Press me</button>
+            <div>
+                <button onClick={() => { 
+                    this.props.updateToDo({...this.props.selectedToDo, content: this.state.content})
+                     }}>Update Selected</button>
+            </div>
             {!this.props.selectedToDo.content && <div>'no item selected'</div>}
         </React.Fragment>)
     }
@@ -29,7 +34,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     addToDo: actions.addToDo,
     removeToDo: actions.removeToDo,
-    selectToDo: actions.selectToDo
+    selectToDo: actions.selectToDo,
+    updateToDo: actions.updateToDo
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoList)
