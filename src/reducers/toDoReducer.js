@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/actionTypes'
 
-const initialSelectedToDo = {};
+const initialSelectedToDoId = -1;
 const initialToDos = [
     {
         id: 0,
@@ -35,7 +35,7 @@ const todos = (state = initialToDos, action) => {
 
     if (action.type === actionTypes.TOGGLE_TODO) {
         return state.map((todo) => {
-            if (todo.id !== action.payload.id) {
+            if (todo.id !== action.payload) {
                 return todo
             }
             return { ...todo, checked: !todo.checked }
@@ -46,15 +46,12 @@ const todos = (state = initialToDos, action) => {
 }
 
 
-const selectedToDo = (state = initialSelectedToDo, action) => {
+const selectedToDoId = (state = initialSelectedToDoId, action) => {
     if (action.type === actionTypes.SELECT_TODO) {
         return action.payload;
     }
-    if (action.type === actionTypes.TOGGLE_TODO){
-        if(state.id === action.payload.id)
-           return {...state, checked: !state.checked };
-    }
+   
     return state;
 }
 
-export default { todos, selectedToDo };
+export default { todos, selectedToDoId };

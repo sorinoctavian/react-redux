@@ -12,9 +12,9 @@ class ToDoList extends React.Component {
 
                         <li
                          key={todo.id}> 
-                           <input type="checkbox" checked={todo.checked}
-                           onClick={() => this.props.toggleToDo(todo)}/>
-                            <span onClick={() => { this.props.selectToDo(todo) }}>{todo.content}</span>
+                           <input type="checkbox" checked={todo.checked} 
+                           onClick={() => this.props.toggleToDo(todo.id)}/>
+                            <span onClick={() => { this.props.selectToDo(todo.id) }}>{todo.content}</span>
                             <button onClick={() => this.props.removeToDo(todo.id)}>X</button>
                         </li>
                     )
@@ -26,10 +26,10 @@ class ToDoList extends React.Component {
             <button onClick={() => { this.props.addToDo(this.state.content) }}>Press me</button>
             <div>
                 <button onClick={() => {
-                    this.props.updateToDo({...this.props.selectedToDo, content: this.state.content})
+                    this.props.updateToDo({id: this.props.selectedToDoId, content: this.state.content})
                 }}>Update Selected</button>
             </div>
-            {!this.props.selectedToDo.content && <div>'no item selected'</div>}
+            {this.props.selectedToDoId === -1 && <div>'no item selected'</div>}
         </React.Fragment>)
     }
 }
@@ -37,7 +37,7 @@ class ToDoList extends React.Component {
 const mapStateToProps = state => {
     return {
         todos: state.todos,
-        selectedToDo: state.selectedToDo
+        selectedToDoId: state.selectedToDoId
     }
 }
 

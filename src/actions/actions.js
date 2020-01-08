@@ -21,10 +21,10 @@ export const removeToDo = (id) => {
     }
 }
 
-export const selectToDo = (toDo) => {
+export const selectToDo = (id) => {
     return {
         type: actionTypes.SELECT_TODO,
-        payload: toDo
+        payload :  id 
     }
 }
 
@@ -35,9 +35,9 @@ export const updateToDo = (toDo) => {
     }
 }
 
-export const toggleToDo = (toDo) => {
+export const toggleToDo = (id) => {
     return {
         type: actionTypes.TOGGLE_TODO,
-        payload : toDo
+        payload :  id 
     }
 }
