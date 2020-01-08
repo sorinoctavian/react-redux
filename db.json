@@ -6,19 +6,9 @@
       "checked": false
     },
     {
-      "id": 1,
-      "content": "buy coffee",
-      "checked": true
-    },
-    {
-      "id": 2,
-      "content": "buy bread",
-      "checked": false
-    },
-    {
-      "content": "abcs",
+      "content": "add",
       "checked": false,
-      "id": 3
+      "id": 1
     }
   ]
 }
