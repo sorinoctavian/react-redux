@@ -41,3 +41,19 @@ export const toggleToDo = (id) => {
         payload :  id 
     }
 }
+
+export const getToDoCollection=()=>{
+    return{
+        type:actionTypes.GET_TODO_COLLECTION,
+        payload:[{
+            id: 0,
+            content: "TODO 1",
+            checked: false
+        },
+        {
+            id: 1,
+            content: "TODO 2",
+            checked: true
+        }]
+    }
+}

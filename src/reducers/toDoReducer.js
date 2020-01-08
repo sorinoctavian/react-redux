@@ -1,17 +1,7 @@
 import * as actionTypes from '../actions/actionTypes'
 
 const initialSelectedToDoId = -1;
-const initialToDos = [
-    {
-        id: 0,
-        content: "TODO 1",
-        checked: false
-    },
-    {
-        id: 1,
-        content: "TODO 2",
-        checked: true
-    }];
+const initialToDos = [];
 
 const todos = (state = initialToDos, action) => {
     console.log(action);
@@ -29,7 +19,7 @@ const todos = (state = initialToDos, action) => {
                 return todo
             }
 
-            return {...action.payload }
+            return { ...action.payload }
         })
     }
 
@@ -42,6 +32,10 @@ const todos = (state = initialToDos, action) => {
         })
     }
 
+    if (action.type === actionTypes.GET_TODO_COLLECTION) {
+        return [ ...action.payload ]
+    }
+
     return state;
 }
 
@@ -50,7 +44,7 @@ const selectedToDoId = (state = initialSelectedToDoId, action) => {
     if (action.type === actionTypes.SELECT_TODO) {
         return action.payload;
     }
-   
+
     return state;
 }
 

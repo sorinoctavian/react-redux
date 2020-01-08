@@ -4,6 +4,9 @@ import * as actions from './actions'
 
 class ToDoList extends React.Component {
     state = { content: "" }
+    componentDidMount(){
+        this.props.getToDoCollection();
+    }
     render() {
         let {toggleToDo, selectToDo, removeToDo, updateToDo, addToDo, selectedToDoId, todos} = this.props;
        
@@ -48,7 +51,8 @@ const mapDispatchToProps = {
     removeToDo: actions.removeToDo,
     selectToDo: actions.selectToDo,
     updateToDo: actions.updateToDo,
-    toggleToDo: actions.toggleToDo
+    toggleToDo: actions.toggleToDo,
+    getToDoCollection:actions.getToDoCollection
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoList)
