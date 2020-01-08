@@ -7,8 +7,18 @@
     },
     {
       "id": 1,
-      "content": "buy break",
+      "content": "buy coffee",
       "checked": true
+    },
+    {
+      "id": 2,
+      "content": "buy bread",
+      "checked": false
+    },
+    {
+      "content": "abcs",
+      "checked": false,
+      "id": 3
     }
   ]
 }

@@ -1,16 +1,16 @@
 import * as actionTypes from './actionTypes';
-import { getToDos } from '../apis/api';
+import { getToDos, postToDo } from '../apis/api';
 
-let idCounter = 2;
-export const addToDo = (text) => {
-    return {
+export const addToDo =(text) => async (dispatch)=>{
+    let newToDo = {
+        content: text,
+        checked: false
+    };
+    let response = await postToDo(newToDo);
+    dispatch ({
         type : actionTypes.ADD_TODO,
-        payload: {
-            id: idCounter++,
-            content: text,
-            checked: false
-        }
-    }
+        payload: response.data
+    });
 }
 
 export const removeToDo = (id) => {
