@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import { getToDos, postToDo, deleteToDo } from '../apis/api';
+import { getToDos, postToDo, deleteToDo, patchToDo } from '../apis/api';
 
 export const addToDo =(text) => async (dispatch)=>{
     let newToDo = {
@@ -14,7 +14,7 @@ export const addToDo =(text) => async (dispatch)=>{
 }
 
 export const removeToDo = (id) => async (dispatch)=>{
-let response = await deleteToDo(id);
+    await deleteToDo(id);
     dispatch( {
         type: actionTypes.REMOVE_TODO,
         payload: {id}
@@ -28,11 +28,12 @@ export const selectToDo = (id) => {
     }
 }
 
-export const updateToDo = (toDo) => {
-    return {
+export const updateToDo = (toDo) => async (dispatch) =>{
+    let response = await patchToDo(toDo);
+    dispatch( {
         type: actionTypes.UPDATE_TODO,
-        payload: toDo
-    }
+        payload: {...toDo, ...response.data}
+    });
 }
 
 export const toggleToDo = (id) => {

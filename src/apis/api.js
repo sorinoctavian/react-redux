@@ -14,3 +14,8 @@ export const deleteToDo = async (id) => {
     let response = await axios.delete(`http://localhost:3004/todos/${id}`);
     return response;
 }
+
+export const patchToDo = async (todo) => {
+    let response = await axios.patch(`http://localhost:3004/todos/${todo.id}`, todo);
+    return response;
+}
