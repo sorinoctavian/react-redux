@@ -5,17 +5,19 @@ import * as actions from './actions'
 class ToDoList extends React.Component {
     state = { content: "" }
     render() {
+        let {toggleToDo, selectToDo, removeToDo, updateToDo, addToDo, selectedToDoId, todos} = this.props;
+       
         return (<React.Fragment>
             <ul>
-                {this.props.todos.map((todo) => {
+                {todos.map((todo) => {
                     return (
 
                         <li
                          key={todo.id}> 
                            <input type="checkbox" checked={todo.checked} 
-                           onClick={() => this.props.toggleToDo(todo.id)}/>
-                            <span onClick={() => { this.props.selectToDo(todo.id) }}>{todo.content}</span>
-                            <button onClick={() => this.props.removeToDo(todo.id)}>X</button>
+                           onClick={() => toggleToDo(todo.id)}/>
+                            <span onClick={() => { selectToDo(todo.id) }}>{todo.content}</span>
+                            <button onClick={() => removeToDo(todo.id)}>X</button>
                         </li>
                     )
 
@@ -23,13 +25,13 @@ class ToDoList extends React.Component {
             </ul>
             <input type="text" onChange={(e) => { this.setState({ content: e.target.value }) }} />
 
-            <button onClick={() => { this.props.addToDo(this.state.content) }}>Press me</button>
+            <button onClick={() => { addToDo(this.state.content) }}>Press me</button>
             <div>
                 <button onClick={() => {
-                    this.props.updateToDo({id: this.props.selectedToDoId, content: this.state.content})
+                    updateToDo({id: selectedToDoId, content: this.state.content})
                 }}>Update Selected</button>
             </div>
-            {this.props.selectedToDoId === -1 && <div>'no item selected'</div>}
+            {selectedToDoId === -1 && <div>'no item selected'</div>}
         </React.Fragment>)
     }
 }
