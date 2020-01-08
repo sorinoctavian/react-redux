@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import { getToDos } from '../apis/api';
 
 let idCounter = 2;
 export const addToDo = (text) => {
@@ -42,18 +43,10 @@ export const toggleToDo = (id) => {
     }
 }
 
-export const getToDoCollection=()=>{
-    return{
+export const getToDoCollection= () => async (dispatch)=>{
+    let response = await getToDos();
+    dispatch({
         type:actionTypes.GET_TODO_COLLECTION,
-        payload:[{
-            id: 0,
-            content: "TODO 1",
-            checked: false
-        },
-        {
-            id: 1,
-            content: "TODO 2",
-            checked: true
-        }]
-    }
+        payload:[...response.data]
+    });
 }

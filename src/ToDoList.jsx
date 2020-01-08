@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import * as actions from './actions'
-import { getToDos } from './apis/api';
+
 
 class ToDoList extends React.Component {
     state = { content: "" }
     async componentDidMount(){
         this.props.getToDoCollection();
-        let response = await getToDos();
-        console.log(response);
+        
     }
     render() {
         let {toggleToDo, selectToDo, removeToDo, updateToDo, addToDo, selectedToDoId, todos} = this.props;

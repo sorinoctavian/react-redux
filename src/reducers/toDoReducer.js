@@ -4,7 +4,6 @@ const initialSelectedToDoId = -1;
 const initialToDos = [];
 
 const todos = (state = initialToDos, action) => {
-    console.log(action);
     if (action.type === actionTypes.ADD_TODO) {
         return [...state, action.payload];
     }
