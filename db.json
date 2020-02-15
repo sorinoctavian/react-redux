@@ -1,31 +1,19 @@
 {
   "todos": [
     {
-      "id": "12s21e3",
-      "content": "buy milk",
-      "done": false
+      "content": "add15",
+      "checked": false,
+      "id": 0
     },
     {
-      "id": "d21d2s",
-      "content": "buy break",
-      "done": true
-    }
-  ],
-  "posts": [
+      "content": "fvxvxvxcx",
+      "checked": false,
+      "id": 1
+    },
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "content": "fvxvxvxcxccsdadadadxcx",
+      "checked": false,
+      "id": 2
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
